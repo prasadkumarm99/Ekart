@@ -1,0 +1,35 @@
+{
+  "name": "ekart",
+  "version": "1.0.0",
+  "description": "E-commerce application",
+  "main": "index.js",
+  "author": "Prasad Kumar M",
+  "license": "Apache License 2.0",
+  "scripts": {
+    "server": "live-server public/",
+    "build": "webpack",
+    "dev-server": "webpack serve"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "7",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^5.2.6",
+    "live-server": "^1.2.1",
+    "node-sass": "^6.0.0",
+    "normalize.css": "^8.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-modal": "^3.14.2",
+    "sass-loader": "^12.0.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "devDependencies": {}
+}
