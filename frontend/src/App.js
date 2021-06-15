@@ -36,7 +36,7 @@ function App() {
           <div className="header-links">
             <a href="cart.html">Cart</a>
             {userInfo ? (
-              <Link to="/profile">{userInfo.name}</Link>
+              <Link to="/profile">Profile</Link>
             ) : (
               <Link to="/signin">Sign In</Link>
             )}
@@ -85,7 +85,7 @@ function App() {
             <Route path="/" exact={true} component={HomeScreen} />
           </div>
         </main>
-        <footer className="footer">All right reserved.</footer>
+        <footer className="footer">Thanks for visiting this site</footer>
       </div>
     </BrowserRouter>
   );
