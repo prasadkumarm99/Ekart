@@ -1,3 +1,8 @@
+#Ekart
+
+Ekart is an E-commerce web application
+Learning Node.js and React.js
+
 ## Run Locally
 
 ### 1. Install MongoDB
