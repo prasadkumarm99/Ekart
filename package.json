@@ -1,35 +1,45 @@
 {
   "name": "ekart",
   "version": "1.0.0",
-  "description": "E-commerce application",
+  "description": "Ekart is an ecommerce application",
   "main": "index.js",
-  "author": "Prasad Kumar M",
-  "license": "Apache License 2.0",
-  "scripts": {
-    "server": "live-server public/",
-    "build": "webpack",
-    "dev-server": "webpack serve"
-  },
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "7",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "css-loader": "^5.2.6",
-    "live-server": "^1.2.1",
-    "node-sass": "^6.0.0",
-    "normalize.css": "^8.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-modal": "^3.14.2",
-    "sass-loader": "^12.0.0",
-    "style-loader": "^2.0.0",
-    "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "aws-sdk": "^2.702.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "eslint-plugin-react": "^7.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.11",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "start": "nodemon --watch backend --exec babel-node backend/server.js",
+    "build": "rm -rf dist && babel backend -d dist  && cd frontend && npm install && npm run build",
+    "heroku-postbuild-x": "npm run build && cd frontend && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prasadkumarm99/Ekart.git"
+  },
+  "author": "M Prasad Kumar",
+  "license": "Apache license 2.0",
+  "homepage": "https://github.com/prasadkumarm99/Ekart#readme",
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
+  }
 }

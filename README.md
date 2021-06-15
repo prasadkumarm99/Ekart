@@ -1,6 +1,36 @@
-# Ekart
+## Run Locally
 
-This application uses HTML, CSS, JS, node.js and react.js
+### 1. Install MongoDB
 
-Ekart is an online application.
-Which helps the users to order products rigth from their home.
+Download it from here: https://docs.mongodb.com/manual/administration/install-community/
+
+### 2. Run Backend
+
+```
+$ npm install
+$ npm start
+```
+
+### 3. Run Frontend
+
+```
+# open new terminal
+$ cd frontend
+$ npm install
+$ npm start
+```
+
+### 4. Create Admin User
+
+- Run this on chrome: http://localhost:5000/api/users/createadmin
+- It returns admin email and password
+
+### 5. Login
+
+- Run http://localhost:3000/signin
+- Enter admin email and password and click signin
+
+### 6. Create Products
+
+- Run http://localhost:3000/products
+- Click create product and enter product info
