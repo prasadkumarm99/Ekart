@@ -25,17 +25,12 @@ $ npm install
 $ npm start
 ```
 
-### 4. Create Admin User
-
-- Run this on chrome: http://localhost:5000/api/users/createadmin
-- It returns admin email and password
-
-### 5. Login
+### 4. Login
 
 - Run http://localhost:3000/signin
 - Enter admin email and password and click signin
 
-### 6. Create Products
+### 5. Create Products
 
 - Run http://localhost:3000/products
 - Click create product and enter product info

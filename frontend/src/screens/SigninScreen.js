@@ -50,7 +50,7 @@ function SigninScreen(props) {
           New to Ekart?
         </li>
         <li>
-          <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your Ekart account</Link>
+          <Link to={redirect === "/" ? "register/false" : "register?redirect=" + redirect} className="button secondary text-center" >Create your Ekart account</Link>
         </li>
       </ul>
     </form>

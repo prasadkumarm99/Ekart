@@ -34,19 +34,20 @@ function App() {
             <Link to="/">Ekart</Link>
           </div>
           <div className="header-links">
-            <a href="cart.html">Cart</a>
+            <a href="cart.html"><b>Cart</b></a>
             {userInfo ? (
-              <Link to="/profile">Profile</Link>
+              <Link to="/profile"><b>Profile</b></Link>
             ) : (
-              <Link to="/signin">Sign In</Link>
+              <Link to="/signin"><b>Sign In</b></Link>
             )}
             {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
-                <a href="#">Admin</a>
+                <a href="#"><b>Admin</b></a>
                 <ul className="dropdown-content">
                   <li>
                     <Link to="/orders">Orders</Link>
                     <Link to="/products">Products</Link>
+                    <Link to="/register/true">Add_Admin</Link>
                   </li>
                 </ul>
               </div>
@@ -78,7 +79,7 @@ function App() {
             <Route path="/payment" component={PaymentScreen} />
             <Route path="/placeorder" component={PlaceOrderScreen} />
             <Route path="/signin" component={SigninScreen} />
-            <Route path="/register" component={RegisterScreen} />
+            <Route path="/register/:id" component={RegisterScreen} />
             <Route path="/product/:id" component={ProductScreen} />
             <Route path="/cart/:id?" component={CartScreen} />
             <Route path="/category/:id" component={HomeScreen} />
