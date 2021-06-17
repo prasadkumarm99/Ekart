@@ -62,18 +62,24 @@ router.post('/register', async (req, res) => {
   }
 });
 
-router.get('/createadmin', async (req, res) => {
-  try {
-    const user = new User({
-      name: 'Basir',
-      email: 'admin@example.com',
-      password: '1234',
-      isAdmin: true,
+router.get('/admin_register', async (req, res) => {
+  const user = new User({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    isAdmin: true,
+  });
+  const newUser = await user.save();
+  if (newUser) {
+    res.send({
+      _id: newUser.id,
+      name: newUser.name,
+      email: newUser.email,
+      isAdmin: newUser.isAdmin,
+      token: getToken(newUser),
     });
-    const newUser = await user.save();
-    res.send(newUser);
-  } catch (error) {
-    res.send({ message: error.message });
+  } else {
+    res.status(401).send({ message: 'Invalid User Data.' });
   }
 });
 

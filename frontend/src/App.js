@@ -34,7 +34,7 @@ function App() {
             <Link to="/">Ekart</Link>
           </div>
           <div className="header-links">
-            <a href="cart.html"><b>Cart</b></a>
+            <a href="cart"><b>Cart</b></a>
             {userInfo ? (
               <Link to="/profile"><b>Profile</b></Link>
             ) : (

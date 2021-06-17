@@ -47,7 +47,7 @@ button {
   padding: 1rem;
 }
 .header-links a:hover {
-  color: #ff8000;
+  color: #fad353;
 }
 .main {
   grid-area: main;
@@ -64,7 +64,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #ff8000;
+  color: #53e9fa;
 }
 /* Home Screen */
 .products {

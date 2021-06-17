@@ -27,7 +27,6 @@ function ProfileScreen(props) {
   const { loading: loadingOrders, orders, error: errorOrders } = myOrderList;
   useEffect(() => {
     if (userInfo) {
-      console.log(userInfo.name)
       setEmail(userInfo.email);
       setName(userInfo.name);
       setPassword(userInfo.password);
@@ -67,7 +66,7 @@ function ProfileScreen(props) {
             </li>
             <li>
               <label htmlFor="password">Password</label>
-              <input value={password} type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
+              <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
               </input>
             </li>
 

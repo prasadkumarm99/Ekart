@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { register } from '../actions/userActions';
+import { register, adminRegister } from '../actions/userActions';
 
 function RegisterScreen(props) {
 
@@ -12,6 +12,13 @@ function RegisterScreen(props) {
   const userRegister = useSelector(state => state.userRegister);
   const { loading, userInfo, error } = userRegister;
   const dispatch = useDispatch();
+  let is_admin;
+  if (props.location.pathname.split("/")[2] === "true"){
+    is_admin = true;
+  }
+  else {
+    is_admin = false
+  }
 
   const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
   useEffect(() => {
@@ -25,10 +32,8 @@ function RegisterScreen(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(props)
-    if (props.location.pathname.split("/")[2] === "true") {
-      // dispatch(register(name, email, password));
-      console.log("Admin registration working")
+    if (is_admin) {
+      dispatch(adminRegister(name, email, password));
     }
     else {
       dispatch(register(name, email, password));
@@ -38,37 +43,50 @@ function RegisterScreen(props) {
     <form onSubmit={submitHandler} >
       <ul className="form-container">
         <li>
-          <h2>{props.location.pathname.split("/")[2] === "true" ? "Create Ekart Admin Account" :"Create Ekart Account"}</h2>
+          <h2>{is_admin ? "Create Ekart Admin Account" :"Create Ekart Account"}</h2>
         </li>
         <li>
           {loading && <div>Loading...</div>}
           {error && <div>{error}</div>}
         </li>
         <li>
-          <input placeholder="Name" type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
+          <label htmlFor="name">
+            Name
+          </label>
+          <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
           </input>
         </li>
         <li>
-          <input placeholder="Email" type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+          <label htmlFor="email">
+            Email
+          </label>
+          <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
           </input>
         </li>
         <li>
-          <input placeholder="Password" type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
+          <label htmlFor="password">
+            Password
+          </label>
+          <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
           </input>
         </li>
         <li>
-          <input placeholder="Re-Enter Password" type="password" id="rePassword" name="rePassword" onChange={(e) => setRePassword(e.target.value)}>
+          <label htmlFor="rePassword">
+            Re-Enter Password
+          </label>
+          <input type="password" id="rePassword" name="rePassword" onChange={(e) => setRePassword(e.target.value)}>
           </input>
         </li>
         <li>
           <button type="submit" className="button primary">Register</button>
         </li>
-        <li>
-          Already have an account?
-          <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="button secondary text-center" >Signin to your Ekart account</Link>
-
-        </li>
-
+        {
+          is_admin ? "" :
+          (<li>
+            Already have an account?
+            <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="button secondary text-center" >Signin to your Ekart account</Link>
+          </li>)
+        }
       </ul>
     </form>
   </div>
