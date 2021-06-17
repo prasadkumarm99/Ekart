@@ -51,7 +51,7 @@ const register = (name, email, password, isAdmin) => async (dispatch) => {
 const adminRegister = (name, email, password) => async (dispatch) => {
   dispatch({ type: USER_REGISTER_REQUEST, payload: { name, email, password } });
   try {
-    const { data } = await Axios.post("/api/users/admin_register", { name, email, password });
+    const { data } = await Axios.post("/api/users/adminregister", { name, email, password });
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     Cookie.set('adminInfo', JSON.stringify(data));
   } catch (error) {
