@@ -9,6 +9,7 @@ function ProfileScreen(props) {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const dispatch = useDispatch();
+  console.log(props)
 
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;

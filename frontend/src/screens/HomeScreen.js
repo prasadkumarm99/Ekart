@@ -38,9 +38,15 @@ function HomeScreen(props) {
           <form onSubmit={submitHandler}>
             <input
               name="searchKeyword"
+              className="input search"
+              placeholder="Search for products"
               onChange={(e) => setSearchKeyword(e.target.value)}
             />
-            <button type="submit">Search</button>
+            <button 
+              type="submit"
+            >
+              Search
+            </button>
           </form>
         </li>
         <li>
@@ -72,7 +78,7 @@ function HomeScreen(props) {
                   <Link to={'/product/' + product._id}>{product.name}</Link>
                 </div>
                 <div className="product-brand">{product.brand}</div>
-                <div className="product-price">${product.price}</div>
+                <div className="product-price">Rs.{product.price}</div>
                 <div className="product-rating">
                   <Rating
                     value={product.rating}

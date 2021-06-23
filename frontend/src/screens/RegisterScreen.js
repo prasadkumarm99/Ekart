@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { register, adminRegister } from '../actions/userActions';
+import { register } from '../actions/userActions';
+import validator from 'validator'
 
 function RegisterScreen(props) {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rePassword, setRePassword] = useState('');
+  const [rePassword, setRePassword] = useState('re');
+  const [status, setStatus] = useState('');
   const userRegister = useSelector(state => state.userRegister);
   const { loading, userInfo, error } = userRegister;
   const dispatch = useDispatch();
@@ -33,7 +35,7 @@ function RegisterScreen(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     if (is_admin) {
-      dispatch(adminRegister(name, email, password));
+      dispatch(register(name, email, password, is_admin));
     }
     else {
       dispatch(register(name, email, password));
@@ -53,8 +55,7 @@ function RegisterScreen(props) {
           <label htmlFor="name">
             Name
           </label>
-          <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
-          </input>
+          <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}></input>
         </li>
         <li>
           <label htmlFor="email">
@@ -67,18 +68,43 @@ function RegisterScreen(props) {
           <label htmlFor="password">
             Password
           </label>
-          <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
+          <input type="password" id="password" name="password" onChange={(e) => {
+            const passcode = e.target.value
+            if (validator.isStrongPassword(passcode)) {
+              setRePassword("")
+              setStatus("Password missmatch")
+            } else {
+              setStatus("Weak password") 
+            }
+            return setPassword(passcode)
+          }}>
           </input>
         </li>
+        {rePassword === "re" && status && <li>{status}</li>}
         <li>
           <label htmlFor="rePassword">
             Re-Enter Password
           </label>
-          <input type="password" id="rePassword" name="rePassword" onChange={(e) => setRePassword(e.target.value)}>
+          <input type="password" id="rePassword" name="rePassword" onChange={(e) => {
+            const passcode = e.target.value
+            if (password === passcode) {
+              setStatus("matched")
+            } else {
+              setStatus("Password missmatch")
+            }
+            return setRePassword(passcode)
+          }}>
           </input>
         </li>
+        {status != "matched" && <li>{status}</li>}
         <li>
-          <button type="submit" className="button primary">Register</button>
+          <button 
+            type="submit" 
+            className="button primary" 
+            disabled={status !== "matched"}
+          >
+            Register
+          </button>
         </li>
         {
           is_admin ? "" :

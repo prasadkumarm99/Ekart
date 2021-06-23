@@ -5,7 +5,7 @@ import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import RegisterScreen from './screens/RegisterScreen';
 import ProductsScreen from './screens/ProductsScreen';
 import ShippingScreen from './screens/ShippingScreen';
@@ -14,10 +14,13 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import OrdersScreen from './screens/OrdersScreen';
+import { logout } from './actions/userActions'
 
-function App() {
+function App(props) {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
+  const dispatch = useDispatch()
+  console.log(props)
 
   const openMenu = () => {
     document.querySelector('.sidebar').classList.add('open');
@@ -25,6 +28,10 @@ function App() {
   const closeMenu = () => {
     document.querySelector('.sidebar').classList.remove('open');
   };
+  const handleLogout = () => {
+    dispatch(logout());
+  }
+
   return (
     <BrowserRouter>
       <div className="grid-container">
@@ -36,7 +43,18 @@ function App() {
           <div className="header-links">
             <a href="cart"><b>Cart</b></a>
             {userInfo ? (
-              <Link to="/profile"><b>Profile</b></Link>
+              <span>
+                <Link to="/profile"><b>Profile</b></Link>
+                <Link to="/signin">
+                  <button 
+                    type="button" 
+                    onClick={handleLogout} 
+                    className="button_link"
+                  >
+                    Logout
+                  </button>
+                </Link>
+              </span>
             ) : (
               <Link to="/signin"><b>Sign In</b></Link>
             )}

@@ -232,6 +232,11 @@ a > .rating > span:last-child {
 .text-center {
   text-align: center;
 }
+.search {
+  border: none;
+  border-bottom: 0.5rem #0ca3d1 solid;
+}
+
 /* Cart */
 
 .cart {
@@ -281,6 +286,7 @@ a > .rating > span:last-child {
   flex: 1 1;
   font-size: 2.5rem;
   text-align: right;
+  width: 100px;
 }
 
 /* forms */
@@ -447,10 +453,14 @@ tbody > tr:nth-child(odd) {
 .filter input,
 .filter button,
 .filter select {
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border: 0.1rem #c0c0c0 solid;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-bottom: 0.3rem #0ca3d1 solid;
+  background: none;
   font-size: 1.6rem;
+}
+.filter input.search {
+  width: 68%;
 }
 .categories {
   padding: 0;
@@ -463,4 +473,16 @@ tbody > tr:nth-child(odd) {
 
 .categories a:hover {
   background-color: #c0c0c0;
+}
+
+.button_link {
+  border: none;
+  background: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.button_link:hover {
+  color: #fad353;
+  cursor: pointer;
 }

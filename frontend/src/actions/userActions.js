@@ -37,23 +37,15 @@ const signin = (email, password) => async (dispatch) => {
 }
 
 const register = (name, email, password, isAdmin) => async (dispatch) => {
+  let serve = "/api/users/register"
+  if (isAdmin){
+    serve = "/api/users/adminregister"
+  }
   dispatch({ type: USER_REGISTER_REQUEST, payload: { name, email, password, isAdmin } });
   try {
-    const { data } = await Axios.post("/api/users/register", { name, email, password, isAdmin });
+    const { data } = await Axios.post(serve, { name, email, password, isAdmin });
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     Cookie.set('userInfo', JSON.stringify(data));
-  } catch (error) {
-    dispatch({ type: USER_REGISTER_FAIL, payload: error.message });
-  }
-}
-
-/* Change */
-const adminRegister = (name, email, password) => async (dispatch) => {
-  dispatch({ type: USER_REGISTER_REQUEST, payload: { name, email, password } });
-  try {
-    const { data } = await Axios.post("/api/users/adminregister", { name, email, password });
-    dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
-    Cookie.set('adminInfo', JSON.stringify(data));
   } catch (error) {
     dispatch({ type: USER_REGISTER_FAIL, payload: error.message });
   }
@@ -63,4 +55,4 @@ const logout = () => (dispatch) => {
   Cookie.remove("userInfo");
   dispatch({ type: USER_LOGOUT })
 }
-export { signin, register, logout, update, adminRegister };
+export { signin, register, logout, update };
