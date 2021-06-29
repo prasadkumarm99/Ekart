@@ -6,6 +6,7 @@ body {
   font: 1.6rem Helvetica;
   height: 100vh;
   margin: 0;
+  background: whitesmoke;
 }
 button {
   font-size: 1.6rem;
@@ -76,9 +77,9 @@ a:hover {
 .products li {
   list-style-type: none;
   padding: 0;
-  flex: 0 1 34rem;
+  flex: 0 1 15rem;
   margin: 1rem;
-  height: 50rem;
+  height: 35rem;
   border-bottom: 0.1rem #c0c0c0 solid;
 }
 .product {
@@ -86,6 +87,8 @@ a:hover {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  background: #dddddd;
+  padding: 5px;
 }
 .product-name {
   font-size: 2rem;
@@ -93,15 +96,15 @@ a:hover {
 }
 .product-brand {
   font-size: 1.2rem;
-  color: #808080;
+  color: #000000;
 }
 .product-price {
   font-size: 2rem;
   font-weight: bold;
 }
 .product-image {
-  max-width: 34rem;
-  max-height: 34rem;
+  max-width: 24rem;
+  max-height: 24rem;
 }
 .product-rating {
   margin-bottom: 1rem;

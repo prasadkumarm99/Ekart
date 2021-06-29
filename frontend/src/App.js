@@ -20,8 +20,7 @@ function App(props) {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const dispatch = useDispatch()
-  console.log(props)
-
+  
   const openMenu = () => {
     document.querySelector('.sidebar').classList.add('open');
   };

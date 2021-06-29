@@ -96,7 +96,7 @@ function RegisterScreen(props) {
           }}>
           </input>
         </li>
-        {status != "matched" && <li>{status}</li>}
+        {status !== "matched" && <li>{status}</li>}
         <li>
           <button 
             type="submit" 
